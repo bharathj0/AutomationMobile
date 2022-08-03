@@ -18,7 +18,7 @@ public class MainMobile extends Generic
 	          String Email="bharath@gmail.com";
 	          String Password="bharath@1";
 			 @Test(priority = 1)
-				public void Sign() throws InterruptedException
+				public void SignUp() throws InterruptedException
 				{  
 					driver.findElement(By.xpath("//button[.='SIGN IN']")).click();
 					driver.findElement(By.xpath("//a[.='Sign up']")).click();
@@ -27,25 +27,25 @@ public class MainMobile extends Generic
 					driver.findElement(By.xpath("//input[@type='Email']")).sendKeys(Email);//Email
 					driver.findElement(By.xpath("//input[@type='Password']")).sendKeys(Password);//password
 					driver.findElement(By.xpath("//input[@type='date']")).sendKeys("09-08-1998");//DOB
-					driver.findElement(By.xpath("//label[.='Male']/../input[1]")).click();//Male
-					driver.findElement(By.xpath("//label[.='Female']/following-sibling::input")).click();//Female
+					driver.findElement(By.xpath("(//input[@type='radio'])[1]")).click();//Male
+					driver.findElement(By.xpath("(//input[@type='radio'])[2]")).click();//Female
 					driver.findElement(By.xpath("//input[@type='number']")).sendKeys(MobileNo);//MOB
 					driver.findElement(By.xpath("//textarea[@placeholder='Short Bio']")).sendKeys("Hello Bharath");//BIO
 					driver.findElement(By.xpath("//button[@type='submit']")).click();//Register
 					driver.switchTo().alert().accept();
-					driver.findElement(By.xpath("//button[.='Sign In']")).click();//Sign in
+					driver.findElement(By.xpath("//button[text()='Sign In']")).click();//Sign in
 					driver.switchTo().alert().accept();
 					driver.findElement(By.id("username")).sendKeys("bharath007@gmail.com");
 					driver.findElement(By.id("password")).sendKeys("Bharath@!123");
-					driver.findElement(By.xpath("//a[.='Log In']")).click();
+					driver.findElement(By.xpath("//a[@type='submit']")).click();
 				}
 			 @Test( priority = 2,dataProvider="getdata")
 				public void login(String email, String pwd)
 				{
-					driver.findElement(By.xpath("//button[.='SIGN IN']")).click();
+					driver.findElement(By.xpath("//button[text()='SIGN IN']")).click();
 					driver.findElement(By.id("username")).sendKeys(email);
 					driver.findElement(By.id("password")).sendKeys(pwd);
-					driver.findElement(By.xpath("//a[.='Log In']")).click();
+					driver.findElement(By.xpath("//a[@type='submit']")).click();
 					
 				}
 				
